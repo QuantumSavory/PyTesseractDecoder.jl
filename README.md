@@ -22,3 +22,6 @@ You can also import them into your namespace:
 ```
 julia> using PyTesseractDecoder: tesseract, stim, np
 ```
+
+
+This package is separate from PyQDecoders.jl because tesseract-decoder runs on fewer operating systems and breaks the CI of PyQDecoders.jl.
