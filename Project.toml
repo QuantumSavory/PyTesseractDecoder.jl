@@ -1,6 +1,6 @@
 name = "PyTesseractDecoder"
 uuid = "cb7393ab-d93b-4096-98de-53f8be4e08d3"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Stefan Krastanov <stefan@krastanov.org>"]
 
 [deps]
