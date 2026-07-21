@@ -7,7 +7,8 @@ using PyTesseractDecoder
 # imported to be declared as modules filtered out from analysis result
 using CondaPkg, PythonCall
 
-rep = report_package("PyTesseractDecoder";
+rep = report_package(PyTesseractDecoder;
+    target_modules=(PyTesseractDecoder,),
     ignored_modules=(
         AnyFrameModule(CondaPkg),
         AnyFrameModule(PythonCall),

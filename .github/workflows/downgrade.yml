@@ -21,6 +21,18 @@ jobs:
       - uses: julia-actions/setup-julia@v1
         with:
           version: ${{ matrix.version }}
+      - name: Disable workspace directives for downgrade run
+        run: |
+          julia --color=yes -e '
+            using TOML
+            project = TOML.parsefile("Project.toml")
+            if haskey(project, "workspace")
+              delete!(project, "workspace")
+              open("Project.toml", "w") do io
+                TOML.print(io, project)
+              end
+            end
+          '
       - uses: julia-actions/julia-downgrade-compat@v2
         with:
           skip: Pkg,TOML,InteractiveUtils,Random,LinearAlgebra,Dates
@@ -28,3 +40,6 @@ jobs:
       - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
+        with:
+          allow_reresolve: false
+          force_latest_compatible_version: false
